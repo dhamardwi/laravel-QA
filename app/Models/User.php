@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Question;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -32,6 +34,11 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+ 
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
 
     /**
      * Get the attributes that should be cast.
